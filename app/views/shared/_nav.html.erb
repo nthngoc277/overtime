@@ -3,14 +3,14 @@
 </div>
 
 <ul class='nav nav-tabs custom-nav'>
-  <li role='presentation' class='active'>
+  <li role='presentation' class='<%= active?(root_path) %>'>
     <%= link_to 'Home', root_path %>
   </li>
-  <li role='presentation'>
+  <li role='presentation' class='<%= active?(posts_path) %>'>
     <%= link_to 'Time Entries', posts_path %>
   </li>
 
-  <li role='presentation' class='dropdown'>
+  <li role='presentation' class='dropdown <%= active?(edit_user_registration_path) %>'>
     <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
       Account <span class='caret'></span>
     </a>
