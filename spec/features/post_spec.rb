@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 describe 'navigate' do
-  before do
-    @user ||= User.create!(email: 'ngoc@redjourney2016.com', password: '123456', password_confirmation: '123456', first_name: 'Ngoc', last_name: 'Nguyen')
-  end
+
+  before {
+    @user = FactoryGirl.create(:user)
+    login_as(@user, :scope => :user)
+  }
 
   describe 'index' do
     it 'can be reached successfully' do
@@ -12,15 +14,20 @@ describe 'navigate' do
     end
 
     it 'has a title of Posts' do
-      login_as(@user, :scope => :user)
       visit posts_path
       expect(page).to have_content(/Posts/)
+    end
+
+    it 'has list of posts' do
+      post1 = FactoryGirl.create(:post)
+      post2 = FactoryGirl.create(:second_post)
+      visit posts_path
+      expect(page).to have_content(/Some Rationale|Some other Rationale/)
     end
   end
 
   describe 'creation' do
     before do
-      login_as(@user, :scope => :user)
       visit new_post_path
     end
 
@@ -29,11 +36,9 @@ describe 'navigate' do
     end
 
     it 'can be created from new form page' do
-      byebug
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'Some rationale'
       click_on 'Save'
-      byebug
       expect(page).to have_content 'Some rationale'
     end
 
