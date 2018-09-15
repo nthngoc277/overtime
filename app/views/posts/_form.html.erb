@@ -1,4 +1,10 @@
 <%= form_for @post do |f| %>
+  <% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do |error_msg| %>
+      <%= js add_gritter(error_msg, title: "Time Tracker Notification", sticky: true, class_name: 'custom-gritter') %>
+    <% end %>
+  <% end %>
+ 
   <div class="form-group">
     <%= f.label :date %>
     <%= f.date_field :date, class: 'form-control' %>
