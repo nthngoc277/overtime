@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "gritter";
 @import "posts.scss";
 
 .custom-nav {
@@ -10,4 +11,8 @@
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 20px;
+}
+
+.custom-gritter .gritter-item {
+  background: grey;
 }
