@@ -1,4 +1,6 @@
-user = User.create!(email: 'ngoc@nguyen.com', password: '123456', password_confirmation: '123456', first_name: 'Ngoc', last_name: 'Nguyen')
+user = User.create!(email: 'user@test.com', password: '123456', password_confirmation: '123456', first_name: 'Ngoc', last_name: 'Ng')
+AdminUser.create!(email: 'admin@nguyen.com', password: '123456', password_confirmation: '123456', first_name: 'Admin', last_name: 'Ng')
+
 100.times do |post|
   Post.create!(date: Date.today, rationale: "#{post + 1} rationale content", user_id: user.id)
 end
