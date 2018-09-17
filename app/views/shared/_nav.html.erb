@@ -1,30 +1,33 @@
 <div class='brand'>
   Time Tracker
 </div>
+<% if current_user %>
+  <ul class='nav nav-tabs custom-nav'>
+    <li role='presentation' class='<%= active?(root_path) %>'>
+      <%= link_to 'Home', root_path %>
+    </li>
+    <li role='presentation' class='<%= active?(posts_path) %>'>
+      <%= link_to 'Time Entries', posts_path %>
+    </li>
 
-<ul class='nav nav-tabs custom-nav'>
-  <li role='presentation' class='<%= active?(root_path) %>'>
-    <%= link_to 'Home', root_path %>
-  </li>
-  <li role='presentation' class='<%= active?(posts_path) %>'>
-    <%= link_to 'Time Entries', posts_path %>
-  </li>
+    <li role='presentation' class='<%= active?(new_post_path) %>'>
+      <%= link_to 'Enter new entry', new_post_path, id: 'new_post_from_nav' %>
+    </li>
 
-  <li role='presentation' class='<%= active?(new_post_path) %>'>
-    <%= link_to 'Enter new entry', new_post_path, id: 'new_post_from_nav' %>
-  </li>
-
-  <li role='presentation' class='dropdown'>
-    <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
-      Account <span class='caret'></span>
-    </a>
-    <ul class='dropdown-menu'>
-      <li>
-        <%= link_to 'TODO: admin dashboard', root_path %>
-      </li>
-      <li>
-        <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-      </li>
-    </ul>
-  </li>
-</ul>
+    <li role='presentation' class='dropdown'>
+      <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+        Options <span class='caret'></span>
+      </a>
+      <ul class='dropdown-menu'>
+        <% if current_user.try(:type) == 'AdminUser' %>
+          <li>
+            <%= link_to 'Admin Dashboard', admin_root_path %>
+          </li>
+        <% end %>
+        <li>
+          <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+<% end %>
