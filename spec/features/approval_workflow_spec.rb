@@ -28,7 +28,7 @@ describe 'navigation' do
 
     it 'cannot to be edited by owner after it is approved' do
       login_as(user, scope: :user)
-      post = Post.create(rationale: 'rationale', date: Date.today, user_id: user.id)
+      post = Post.create(rationale: 'rationale', date: Date.today, user_id: user.id, overtime_hours: 1.0)
       post.approved!
       visit(edit_post_path(post))
       expect(current_path).to eq root_path

@@ -20,7 +20,7 @@ describe 'navigate' do
 
     it 'has a scope that creators only see their post' do
       post1 = FactoryGirl.create(:post)
-      post2 = Post.create(rationale: 'My rationale', date: Date.today, user_id: user.id)
+      post2 = Post.create(rationale: 'My rationale', date: Date.today, user_id: user.id, overtime_hours: 1.0)
       visit posts_path
       expect(page).to have_content(/My rationale/)
       expect(page).to_not have_content(/Some Rationale/)
@@ -37,7 +37,7 @@ describe 'navigate' do
 
   describe 'delete' do
     it 'can be deleted from index' do
-      post = Post.create(rationale: 'My rationale', date: Date.today, user_id: user.id)
+      post = Post.create(rationale: 'My rationale', date: Date.today, user_id: user.id, overtime_hours: 1.0)
       visit posts_path
       click_link("delete_post_#{post.id}_form_index")
       expect(page.status_code).to eq 200
@@ -56,13 +56,15 @@ describe 'navigate' do
     it 'can be created from new form page' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'Some rationale'
-      click_on 'Save'
-      expect(page).to have_content 'Some rationale'
+      fill_in 'post[overtime_hours]', with: 4.5
+
+      expect { click_on 'Save' }.to change(Post, :count).by(1)
     end
 
     it 'will have a user associated it' do
       fill_in "post[date]", with: Date.today
       fill_in "post[rationale]", with: 'Some rationale'
+      fill_in 'post[overtime_hours]', with: 4.5
 
       click_on "Save"
       expect(User.last.posts.last.rationale).to eq 'Some rationale'
@@ -71,7 +73,7 @@ describe 'navigate' do
 
   describe 'edit' do
     before do
-      @post = Post.create(rationale: 'rationale', date: Date.today, user_id: user.id)
+      @post = Post.create(rationale: 'rationale', date: Date.today, overtime_hours: 1.0, user_id: user.id)
     end
 
     it 'can be edited by who created it' do
