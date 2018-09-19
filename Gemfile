@@ -42,6 +42,7 @@ gem 'gritter', '~> 1.2'
 gem 'administrate', '~> 0.10.0'
 gem 'bourbon', '~> 5.1'
 gem 'pundit', '~> 2.0'
+gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -60,7 +61,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   
-  gem 'byebug'
   gem 'rspec-rails', '~>3.0'
   gem 'database_cleaner'
 end
