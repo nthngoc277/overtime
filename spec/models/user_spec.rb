@@ -7,6 +7,10 @@ RSpec.describe User, type: :model do
     it 'can be created' do
       expect(user).to be_valid
     end
+  end
+
+  describe 'validations' do
+    let(:user) { FactoryGirl.build_stubbed(:user) }
 
     it 'cannot be created without first_name' do
       user.first_name = nil
@@ -20,6 +24,16 @@ RSpec.describe User, type: :model do
 
     it 'cannot be created without phone number' do
       user.phone_number = nil
+      expect(user).to_not be_valid
+    end
+
+    it 'requires phone number to only contain integer' do
+      user.phone_number = 'mystring'
+      expect(user).to_not be_valid
+    end
+
+    it 'requires phone number to only have 10 chars' do
+      user.phone_number = '1234'
       expect(user).to_not be_valid
     end
   end
