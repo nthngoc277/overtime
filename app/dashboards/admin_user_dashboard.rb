@@ -18,6 +18,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     remember_created_at: Field::DateTime,
     first_name: Field::String,
     last_name: Field::String,
+    phone_number: Field::String,
     type: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -35,6 +36,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     # :encrypted_password,
     :first_name,
     :last_name,
+    :phone_number,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -49,6 +51,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     :remember_created_at,
     :first_name,
     :last_name,
+    :phone_number,
     :type,
     :created_at,
     :updated_at,
@@ -67,6 +70,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
     # :remember_created_at,
     :first_name,
     :last_name,
+    :phone_number,
     :type,
   ].freeze
 

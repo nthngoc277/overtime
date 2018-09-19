@@ -5,17 +5,19 @@ FactoryGirl.define do
 
   factory :user do
     email { generate :email }
-    password "123456"
-    password_confirmation "123456"
-    first_name "FirstName"
-    last_name "LastName"
+    password '123456'
+    password_confirmation '123456'
+    first_name 'FirstName'
+    last_name 'LastName'
+    phone_number '5555555555'
   end
 
   factory :admin_user, class: 'AdminUser' do
     email { generate :email }
-    password "123456"
-    password_confirmation "123456"
-    first_name "Admin"
-    last_name "LastName"
+    password '123456'
+    password_confirmation '123456'
+    first_name 'Admin'
+    last_name 'LastName'
+    phone_number '5555555555'
   end
 end

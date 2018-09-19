@@ -11,6 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
     # posts: Field::HasMany,
     id: Field::Number,
     email: Field::String,
+    phone_number: Field::String,
     # encrypted_password: Field::String,
     password: Field::String,
     reset_password_token: Field::String,
@@ -35,6 +36,7 @@ class UserDashboard < Administrate::BaseDashboard
     # :encrypted_password,
     :first_name,
     :last_name,
+    :phone_number,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -49,6 +51,7 @@ class UserDashboard < Administrate::BaseDashboard
     :remember_created_at,
     :first_name,
     :last_name,
+    :phone_number,
     # :type,
     :created_at,
     :updated_at,
@@ -67,6 +70,7 @@ class UserDashboard < Administrate::BaseDashboard
     # :remember_created_at,
     :first_name,
     :last_name,
+    :phone_number,
     # :type,
   ].freeze
 
