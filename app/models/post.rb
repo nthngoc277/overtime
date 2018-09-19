@@ -2,4 +2,10 @@ class Post < ApplicationRecord
   enum status: { submitted: 0, approved: 1, rejected: 2 }
   belongs_to :user
   validates_presence_of :date, :rationale
+
+  scope :posts_by, ->(user) { where(user_id: user.id) }
+
+  def self.posts_displayed_for(user)
+    user.try(:type) == 'AdminUser' ? Post.all : Post.posts_by(user)
+  end
 end
