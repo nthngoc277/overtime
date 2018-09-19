@@ -18,11 +18,12 @@ describe 'navigate' do
       expect(page).to have_content(/Posts/)
     end
 
-    it 'has list of posts' do
+    it 'has a scope that creators only see their post' do
       post1 = FactoryGirl.create(:post)
-      post2 = FactoryGirl.create(:second_post)
+      post2 = Post.create(rationale: 'My rationale', date: Date.today, user_id: @user.id)
       visit posts_path
-      expect(page).to have_content(/Some Rationale|Some other Rationale/)
+      expect(page).to have_content(/My rationale/)
+      expect(page).to_not have_content(/Some Rationale/)
     end
   end
 
@@ -36,7 +37,7 @@ describe 'navigate' do
 
   describe 'delete' do
     it 'can be deleted from index' do
-      post = FactoryGirl.create(:post)
+      post = Post.create(rationale: 'My rationale', date: Date.today, user_id: @user.id)
       visit posts_path
       click_link("delete_post_#{post.id}_form_index")
       expect(page.status_code).to eq 200
