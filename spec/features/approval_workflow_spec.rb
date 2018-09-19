@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 describe 'navigation' do
+  let(:admin_user) { FactoryGirl.create(:admin_user) }
+  
   before do
-    @admin_user = FactoryGirl.create(:admin_user)
-    login_as(@admin_user, scope: :user)
+    login_as(admin_user, scope: :user)
   end
 
   describe 'edit' do

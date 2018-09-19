@@ -2,10 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
   describe 'Creation' do
+    let(:user) { FactoryGirl.create(:user) }
+    
     before {
-      @user = FactoryGirl.create(:user) 
-      login_as(@user, :scope => :user)
+      login_as(user, :scope => :user)
     }
+    
     it 'can be created' do
       post = FactoryGirl.build_stubbed(:post)
       expect(post).to be_valid
