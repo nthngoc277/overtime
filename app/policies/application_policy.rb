@@ -1,5 +1,6 @@
 class ApplicationPolicy
   attr_reader :user, :record
+  ADMIN_TYPES = ['AdminUser']
 
   def initialize(user, record)
     @user = user
@@ -34,8 +35,8 @@ class ApplicationPolicy
     false
   end
 
-  def admin_types
-    ['AdminUser']
+  def admin?
+    ADMIN_TYPES.include?(user.try(:type))
   end
 
   class Scope
