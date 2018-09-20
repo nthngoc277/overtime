@@ -6,10 +6,17 @@
     <li role='presentation' class='<%= active?(root_path) %>'>
       <%= link_to 'Home', root_path %>
     </li>
+
     <li role='presentation' class='<%= active?(posts_path) %>'>
       <%= link_to 'Time Entries', posts_path %>
     </li>
 
+    <% if policy(AuditLog).index? %>
+      <li role='presentation' class='<%= active?(audit_logs_path) %>'>
+        <%= link_to 'Audit Logs', audit_logs_path %>
+      </li>
+    <% end %>
+    
     <li role='presentation' class='<%= active?(new_post_path) %>'>
       <%= link_to 'Enter new entry', new_post_path, id: 'new_post_from_nav' %>
     </li>
