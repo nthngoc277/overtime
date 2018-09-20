@@ -20,7 +20,12 @@ describe AuditLog do
       expect(page).to have_content(/LASTNAME, FIRSTNAME/)
     end
 
-    xit 'cannot be accessed by non admin user' do
+    it 'cannot be accessed by non admin user' do
+      logout(:admin_user)
+      user = FactoryGirl.create(:user)
+      login_as(user, scope: :user)
+      visit audit_logs_path
+      expect(current_path).to eq root_path
     end
   end
 end
