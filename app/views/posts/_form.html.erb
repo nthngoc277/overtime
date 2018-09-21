@@ -17,7 +17,7 @@
 
   <div class="form-group">
     <%= f.label :rationale %>
-    <%= f.text_area :rationale, class: 'form-control' %>
+    <%= f.text_area :rationale, class: 'form-control', rows: 10 %>
   </div>
 
   <%= render partial: 'status', locals: { f: f } if current_user.type == 'AdminUser'%>
