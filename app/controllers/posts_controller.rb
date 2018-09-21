@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   end
 
   def approve
+    authorize @post
     @post.approved!
     redirect_to root_path, notice: 'Post has been approved successfully'
   end
