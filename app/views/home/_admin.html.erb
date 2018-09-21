@@ -1,1 +1,8 @@
-<h1>Hi Admin</h1>
+<div class='row pending-overtime-approvals'>
+  <h2>Items pending your approval</h2>
+  <%= render partial: 'pending_approval', locals: { pending_approvals: @pending_approvals } %>
+</div>
+
+<div class='pending-submissions'>
+
+</div>
