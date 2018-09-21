@@ -1,4 +1,10 @@
 module ApplicationHelper
+  ADMIN_TYPES = ['AdminUser']
+
+  def admin?(user)
+    ADMIN_TYPES.include? user.try(:type)
+  end
+
   def active?(path)
     'active' if current_page?(path)
   end
