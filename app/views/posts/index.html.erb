@@ -10,6 +10,9 @@
     <td></td>
     <td></td>
   </tr>
-  <%= render @posts %>
+  <tbody id='posts'>
+    <%= render @posts %>
+  </tbody>
 </table>
-<%= paginate @audit_logs %>
+
+<%= render partial: 'shared/pagination', locals: { obj: @posts} %>

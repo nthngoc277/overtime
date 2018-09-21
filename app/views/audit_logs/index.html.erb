@@ -8,6 +8,9 @@
     <td>Status</td>
     <td></td>
   </tr>
-  <%= render @audit_logs %>
+  <tbody id='audit_logs'>
+    <%= render @audit_logs %>
+  </tbody>
 </table>
-<%= paginate @audit_logs %>
+
+<%= render partial: 'shared/pagination', locals: { obj: @audit_logs} %>
