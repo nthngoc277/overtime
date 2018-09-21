@@ -3,6 +3,11 @@
   <%= render partial: 'pending_approval', locals: { pending_approvals: @pending_approvals } %>
 </div>
 
-<div class='pending-submissions'>
-
+<div class='row pending-submissions'>
+  <h2>Confirmation Log</h2>
+  <%= render partial: 'confirmation_log', locals: { recent_audit_items: @recent_audit_items } %>
+  
+  <div class='clear view-all'>
+    <%= link_to 'View all Items', audit_logs_path %>
+  </div>
 </div>
