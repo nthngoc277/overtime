@@ -6,7 +6,7 @@
 
     <div class='row action'>
       <div class='col-md-6 approve'>
-        <%= link_to 'Approve', root_path, class: 'btn btn-success btn-block' %>
+        <%= link_to 'Approve', approve_post_path(pending_approval), class: 'btn btn-success btn-block', id: "approve_#{pending_approval.id}" %>
       </div>
       <div class='col-md-6 review'>
         <%= link_to 'Review', edit_post_path(pending_approval), class: 'btn btn-warning btn-block' %>
