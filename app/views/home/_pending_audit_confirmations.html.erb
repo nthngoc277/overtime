@@ -1,0 +1,5 @@
+<% pending_audit_confirmations.each do |pending_audit_confirmation| %>
+  <%= link_to "I confirmed that I did not perform any overtime for the weed of #{pending_audit_confirmation.start_date}", 
+      confirm_audit_log_path(pending_audit_confirmation), class: 'btn btn-lg btn-primary btn-block', id: "pending-confirmation-#{pending_audit_confirmation.id}", 
+      data: { confirm: 'Are you sure that you did not perform any overtime at this time?' } %>
+<% end %>

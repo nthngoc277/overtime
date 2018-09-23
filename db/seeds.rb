@@ -1,5 +1,5 @@
 user = User.create!(email: 'user@test.com', password: '123456', password_confirmation: '123456', first_name: 'Ngoc', last_name: 'Ng', phone_number: '0967714977')
-User.create!(email: 'user1@test.com', password: '123456', password_confirmation: '123456', first_name: 'User1', last_name: 'Ng', phone_number: '0967714977')
+user1 = User.create!(email: 'user1@test.com', password: '123456', password_confirmation: '123456', first_name: 'User1', last_name: 'Ng', phone_number: '0967714977')
 AdminUser.create!(email: 'admin@nguyen.com', password: '123456', password_confirmation: '123456', first_name: 'Admin', last_name: 'Ng', phone_number: '0967714977')
 
 30.times do |post|
@@ -8,6 +8,10 @@ end
 puts "30 Posts have been created"
 
 30.times do
-  AuditLog.create!(user_id: user.id, status: 0, start_date: Date.today - 6.days)
+  AuditLog.create!(user_id: user.id, status: 0, start_date:  6.days.ago)
 end
 puts "30 Audit Logs have been created"
+
+AuditLog.create!(user_id: user1.id, status: 0, start_date: 6.days.ago)
+AuditLog.create!(user_id: user1.id, status: 0, start_date: 13.days.ago)
+AuditLog.create!(user_id: user1.id, status: 0, start_date: 20.days.ago)
