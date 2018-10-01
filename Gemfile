@@ -55,6 +55,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.9'
 
   gem 'lol_dba', '~> 2.1', '>= 2.1.5'
+  gem 'bullet', '~> 5.7', '>= 5.7.6'
 end
 
 group :development do
