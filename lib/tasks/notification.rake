@@ -9,7 +9,7 @@ namespace :notification do
     submitted_posts = Post.submitted
     if submitted_posts.count > 0
       AdminUser.all.each do |manager|
-        ManagerMailer.overtime_report_email(manager).deliver_now
+        ManagerMailer.overtime_report_email(manager).deliver
       end
     end
   end

@@ -53,6 +53,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'factory_girl_rails', '~> 4.9'
+
+  gem 'lol_dba', '~> 2.1', '>= 2.1.5'
 end
 
 group :development do
